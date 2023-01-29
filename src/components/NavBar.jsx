@@ -1,12 +1,23 @@
 import React from "react";
 import goBack from "../assets/goback.png";
 import XO from "../UI/XO";
+import { Context, useAuth } from "../context/Provider";
+import whiteArrow from "../assets/whiteArrow.png";
+import useServices from "../hook/useServices";
+import { useNavigate } from "react-router-dom";
 
+const NavBar = ({ reset }) => {
+  const { user } = useAuth();
+  const {logout} = useServices()
+  const navigate = useNavigate()
 
-const NavBar = ({reset}) => {
+  const handleLogout = async () => {
+    await logout()
+    navigate("/login")
+  }
   return (
     <>
-      <nav className="flex items-center justify-between">
+      <nav className="flex items-center gap-8">
         <div className="flex ">
           <XO text={"text-green-950"} letter={"X"} />
           <XO text={"text-orange-950"} letter={"O"} />
@@ -23,6 +34,18 @@ const NavBar = ({reset}) => {
           <img className="w-8 bg-gray-950 arrow" src={goBack} alt="" />{" "}
         </div>
       </nav>
+      <div className="flex gap-6 items-center text-white text-xs  uppercase font-bold">
+        <p className="">Welcome {user&&user.email}</p>
+        <button onClick={handleLogout} className="flex items-center bg-transparent  text-xs  uppercase font-bold">
+          <p>logout</p>
+          <img
+            className="w-8 h-4 text-white"
+            src={whiteArrow}
+            alt=""
+            srcset=""
+          />
+        </button>
+      </div>
     </>
   );
 };

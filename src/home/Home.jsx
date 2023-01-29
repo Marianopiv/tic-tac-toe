@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SquareItem from "../components/SquareItem";
 import { squares, score } from "../config/squares";
 import ScoreItem from "../components/ScoreItem";
 import { whoWins, random } from "../helper/helper";
 import Winner from "../components/Winner";
 import NavBar from "../components/NavBar";
+import { Context, useAuth } from "../context/Provider";
 
 const Home = () => {
+  const {user} = useAuth()
+
   const [squareChange, setSquareChange] = useState(squares);
   const [jugadas, setJugadas] = useState([]);
   const [change, setChange] = useState(false);
@@ -105,9 +108,9 @@ const Home = () => {
             />
         </div>
       )}
-      <div className="p-4 h-screen flex flex-col bg-black-950  gap-10 ">
+      <div className="p-4 h-screen flex flex-col bg-black-950  gap-8 w-96 items-center ">
         <NavBar reset={reset} />
-        <div className="flex justify-center flex-col mx-4">
+        <div className="flex justify-center flex-col">
           <div className="flex flex-wrap justify-center items-center w-96 gap-4">
             {squareChange.map((item, index) => (
               <div

@@ -1,21 +1,24 @@
-import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from '../components/Login'
-import Register from '../components/Register'
-import Home from "../home/Home"
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "../components/Login";
+import Register from "../components/Register";
+import Provider from "../context/Provider";
+import Home from "../home/Home";
 
 const Rutas = () => {
   return (
     <>
-    <BrowserRouter>
-        <Routes>
-            <Route path="/Home" element={<Home/>}/>
-            <Route path="/" element={<Login/>}/>
-            <Route path="/Register" element={<Register/>}/>
-        </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Provider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </Provider>
+      </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
-export default Rutas
+export default Rutas;
