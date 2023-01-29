@@ -97,14 +97,12 @@ const Home = () => {
   return (
     <>
       {winner && (
-        <div className="w-full h-screen absolute">
-          <div className="">
+        <div className="h-screen absolute">
             <Winner
               nextRound={nextRound}
               reset={reset}
               text={whoWins(squareChange)}
             />
-          </div>
         </div>
       )}
       <div className="p-4 h-screen flex flex-col bg-black-950  gap-10 ">

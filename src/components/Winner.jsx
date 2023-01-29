@@ -4,7 +4,7 @@ import XO from "../UI/XO";
 const Winner = ({ text, reset, nextRound }) => {
   return (
     <>
-      <div className="absolute p-3 rounded-lg top-2/4 bg-black-1050 w-full z-50">
+      <div className="fixed py-3 rounded-lg md:top-1/4 md:right-1/4 top-1/4 w-screen md:w-1/2 bg-black-1050 z-50 shadow-2xl">
         <div className="flex flex-col items-center justify-center gap-5 px-10">
           <h3 className="text-white">{text}</h3>
           <div className="flex items-center gap-5">
