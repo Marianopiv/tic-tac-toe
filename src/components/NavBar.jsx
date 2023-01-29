@@ -4,16 +4,13 @@ import XO from "../UI/XO";
 import { Context, useAuth } from "../context/Provider";
 import whiteArrow from "../assets/whiteArrow.png";
 import useServices from "../hook/useServices";
-import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ reset }) => {
   const { user } = useAuth();
   const {logout} = useServices()
-  const navigate = useNavigate()
 
   const handleLogout = async () => {
     await logout()
-    navigate("/login")
   }
   return (
     <>
