@@ -49,7 +49,7 @@ const Register = () => {
         </label>
         <input
           onChange={handleInput}
-          className="text-slate-900 p-1 rounded-sm"
+          className="text-slate-900 p-1 rounded-sm dark:bg-white"
           type="email"
           name="email"
           placeholder="marianito@gmail.com"
@@ -57,7 +57,7 @@ const Register = () => {
         <label className="text-white">Password</label>
         <input
           onChange={handleInput}
-          className="text-slate-900 p-1 rounded-sm"
+          className="text-slate-900 p-1 rounded-sm dark:bg-white"
           type="password"
           name="password"
           htmlFor="password"

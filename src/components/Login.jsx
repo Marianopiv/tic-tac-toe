@@ -24,11 +24,6 @@ const Login = () => {
     setErrors("");
     try {
       await login(user.email, user.password);
-      Swal.fire({
-        title: `Welcome ${user.email}`,
-        icon: "success",
-        confirmButtonText: "Cool",
-      });
       navigate("/");
     } catch (error) {
       let string = error.message;
@@ -57,7 +52,7 @@ const Login = () => {
           </label>
           <input
             onChange={handleInput}
-            className="text-slate-900 p-1 rounded-sm"
+            className="text-slate-900 p-1 rounded-sm dark:bg-white"
             type="email"
             name="email"
             placeholder="marianito@gmail.com"
@@ -65,7 +60,7 @@ const Login = () => {
           <label className="text-white">Password</label>
           <input
             onChange={handleInput}
-            className="text-slate-900 p-1 rounded-sm"
+            className="text-slate-900 p-1 rounded-sm dark:bg-white"
             type="password"
             name="password"
             htmlFor="password"
