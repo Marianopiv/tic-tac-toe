@@ -4,10 +4,12 @@ import XO from "../UI/XO";
 import { Context, useAuth } from "../context/Provider";
 import whiteArrow from "../assets/whiteArrow.png";
 import useServices from "../hook/useServices";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ reset }) => {
   const { user } = useAuth();
   const {logout} = useServices()
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logout()
@@ -32,9 +34,9 @@ const NavBar = ({ reset }) => {
         </div>
       </nav>
       <div className="flex gap-6 items-center text-white text-xs  uppercase font-bold">
-        <p className="">Welcome {user&&user.email}</p>
-        <button onClick={handleLogout} className="flex items-center bg-transparent  text-xs  uppercase font-bold">
-          <p>logout</p>
+        <p className="">{user?("Welcome "+user.email):"Your progress won't be saved, register to save your score"}</p>
+        <button onClick={user?handleLogout:()=>navigate("/")} className="flex items-center bg-transparent  text-xs  uppercase font-bold">
+          <p>{user?"logout":"login"}</p>
           <img
             className="w-8 h-4 text-white"
             src={whiteArrow}

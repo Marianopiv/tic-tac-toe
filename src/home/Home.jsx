@@ -9,8 +9,8 @@ import { Context, useAuth } from "../context/Provider";
 import useServices from "../hook/useServices";
 
 const Home = () => {
-  const {user} = useAuth()
-  const {saveHighScore} = useServices()
+  const { user } = useAuth();
+  const { saveHighScore } = useServices();
 
   const [squareChange, setSquareChange] = useState(squares);
   const [jugadas, setJugadas] = useState([]);
@@ -97,18 +97,20 @@ const Home = () => {
   useEffect(() => {
     whoWins(squareChange);
     counter();
-    saveHighScore(user.uid,{UserCount,pcCount},user.email)
+    if (user) {
+      saveHighScore(user.uid, { UserCount, pcCount }, user.email);
+    }
   }, [squareChange]);
 
   return (
     <>
       {winner && (
         <div className="h-screen absolute">
-            <Winner
-              nextRound={nextRound}
-              reset={reset}
-              text={whoWins(squareChange)}
-            />
+          <Winner
+            nextRound={nextRound}
+            reset={reset}
+            text={whoWins(squareChange)}
+          />
         </div>
       )}
       <div className="p-4 h-screen flex flex-col bg-black-950  gap-8 w-96 items-center ">

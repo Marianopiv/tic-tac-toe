@@ -70,8 +70,11 @@ const Login = () => {
           <Button text={"Login"} />
         </form>
 
-        <h3>No account? Register now</h3>
-        <Button action={() => navigate("/register")} text={"register"} />
+        <h3>No account? Register now or play without user</h3>
+        <div className="flex gap-4">
+          <Button action={() => navigate("/register")} text={"register"} />
+          <Button action={() => navigate("/home")} text={"fast play"} />
+        </div>
       </div>
     </div>
   );
