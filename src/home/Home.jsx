@@ -6,9 +6,11 @@ import { whoWins, random } from "../helper/helper";
 import Winner from "../components/Winner";
 import NavBar from "../components/NavBar";
 import { Context, useAuth } from "../context/Provider";
+import useServices from "../hook/useServices";
 
 const Home = () => {
   const {user} = useAuth()
+  const {saveHighScore} = useServices()
 
   const [squareChange, setSquareChange] = useState(squares);
   const [jugadas, setJugadas] = useState([]);
@@ -95,6 +97,7 @@ const Home = () => {
   useEffect(() => {
     whoWins(squareChange);
     counter();
+    saveHighScore(user.uid,{UserCount,pcCount},user.email)
   }, [squareChange]);
 
   return (

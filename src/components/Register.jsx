@@ -26,7 +26,7 @@ const Register = () => {
       Swal.fire({
         title: "Usuario registrado correctamente",
         icon: "success",
-        confirmButtonText: "Cool",
+        confirmButtonText: "ok",
       });
       navigate("/");
     } catch (error) {
